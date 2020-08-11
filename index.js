@@ -25,7 +25,7 @@ function formatUserInput(){
 }
 
 function buildURL(stateSearch, maxResults=10){
-    let url = searchURL + '?' + stateSearch + "&limit=" + maxResults
+    let url = searchURL + '?' + stateSearch + "&limit=" + maxResults + '&api_key=' + api_key
     buildPageOnRequest(url)
 }
 
