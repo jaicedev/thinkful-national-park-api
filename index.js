@@ -13,7 +13,11 @@ function formatUserInput(){
     $('#js-park-search').submit(function(e){
         e.preventDefault();
         let stateSearch = $('#js-state-search').val();
-        let maxResults = $('#js-search-limit').val();
+        if($('#js-search-limit').val()){
+            let maxResults = $('#js-search-limit').val()
+        }else{
+            maxResults = 10;
+        }
         let newSearch = stateSearch.replace(/\s+/g,'%2C').replace(/,/g,'%2C')
         stateSearch = "stateCode=" + newSearch
         buildURL(stateSearch, maxResults)
@@ -21,13 +25,18 @@ function formatUserInput(){
 }
 
 function buildURL(stateSearch, maxResults=10){
-    let url = searchURL + '?' + stateSearch + "&limit=" + maxResults + '&api_key=' + api_key
+    let url = searchURL + '?' + stateSearch + "&limit=" + maxResults
     buildPageOnRequest(url)
 }
 
 function buildPageOnRequest(url){
     console.log(url)
-    fetch(url)
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            "Authorization":"CoPdyLHNoI77xjEjFBWBjw0Qhy6PJjOvERyZMMo1"
+        }
+    })
         .then(response => response.json())
         .then(responseJson =>{
             for(let i = 0; i < responseJson.length; i++){
