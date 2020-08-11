@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park Search API</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1 class="title">National Park Search</h1>
+        <p class="sub-title">Using NPS API</p>
+    </header>
+    <main>
+        <div class="container">
+            <form class="park-search" id="js-park-search">
+                <div class="form-row">
+                    <label for="js-state-search" class="search-label">Park State: </label>
+                    <input placeholder="NJ, PA, NY, Etc." type="text" class="search-input" id="js-state-search">
+                </div>
+                <div class="form-row">
+                    <label for="js-search-limit" class="seach-label"># of Results: </label>
+                    <input type="text" placeholder="10" id="js-search-limit">
+                </div>
+                <div class="form-row">
+                    <button class="submit" id="js-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <ul id="js-results">
+
+
+            </ul>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
