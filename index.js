@@ -34,19 +34,20 @@ function buildPageOnRequest(url){
     console.log(url)
     fetch(url)
         .then(response => response.json())
-        .then(responseJson =>{
-            for(let i = 0; i < responseJson.length; i++){
-                let parkName = responseJson[i].name
-                let parkDescription = responseJson[i].description
-                let parkURL = responseJson[i].url
+        .then(response => {
+            console.log(response)
+            let data = response.data;
+            console.log(data)
+            for(let i = 0; i < data.length; i++){
+                let parkName = data[i].fullName
+                let parkDescription = data[i].description
+                let parkURL = data[i].url
                 $('#js-results').append(
-                    `
-                    <li class="park-result">
-                        <h1 class="park-name">${parkName}</h1>
-                        <p class="park-description>${parkDescription}</p>
-                        <a class="park-url" href="${parkURL}">Visit Website</a>
-                    <li>
-                    `
+                    `<li class="park-result">` +
+                        `<h1 class="park-name">${parkName}</h1>` +
+                        `<p class="park-description">${parkDescription}</p>` +
+                        `<a class="park-url" href="${parkURL}">Visit Website</a>` +
+                    `<li>`
                 )
             }
         })
