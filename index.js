@@ -11,6 +11,7 @@ const searchURL = 'https://developer.nps.gov/api/v1/parks/'
 
 function formatUserInput(){
     $('#js-park-search').submit(function(e){
+        $('#js-results').empty();
         e.preventDefault();
         let maxResults = 0;
         let stateSearch = $('#js-state-search').val();
@@ -21,6 +22,8 @@ function formatUserInput(){
         }
         let newSearch = stateSearch.replace(/\s+/g,'%2C').replace(/,/g,'%2C')
         stateSearch = "stateCode=" + newSearch
+        $('#js-state-search').val('')
+        $('#js-search-limit').val('')
         buildURL(stateSearch, maxResults)
     });
 }
