@@ -12,9 +12,10 @@ const searchURL = 'https://developer.nps.gov/api/v1/parks/'
 function formatUserInput(){
     $('#js-park-search').submit(function(e){
         e.preventDefault();
+        let maxResults = 0;
         let stateSearch = $('#js-state-search').val();
         if($('#js-search-limit').val()){
-            let maxResults = $('#js-search-limit').val()
+            maxResults = $('#js-search-limit').val()
         }else{
             maxResults = 10;
         }
@@ -31,12 +32,7 @@ function buildURL(stateSearch, maxResults=10){
 
 function buildPageOnRequest(url){
     console.log(url)
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            "Authorization":"CoPdyLHNoI77xjEjFBWBjw0Qhy6PJjOvERyZMMo1"
-        }
-    })
+    fetch(url)
         .then(response => response.json())
         .then(responseJson =>{
             for(let i = 0; i < responseJson.length; i++){
